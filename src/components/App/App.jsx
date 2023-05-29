@@ -22,6 +22,15 @@ class App extends Component {
     });
     return;
   };
+  componentDidMount() {
+    this.setState(({ contacts }) => ({
+      contacts: [
+        ...(JSON.parse(localStorage.getItem('contacts')) ||
+          this.state.contacts),
+      ],
+    }));
+  }
+
   addContact = user => {
     this.state.contacts.some(contact => {
       return contact.name.toLowerCase() === user.name.toLowerCase();
@@ -43,6 +52,15 @@ class App extends Component {
     this.setState({ filter: e.target.value });
   };
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    // console.log(prevState.contacts);
+    // console.log(this.state.contacts);
+    if (prevState.contacts !== this.state.contacts) {
+      console.log(123);
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
   getVisibleContacts = () => {
     const { filter, contacts } = this.state;
     const normalizedContacts = filter.toLowerCase();
@@ -57,11 +75,14 @@ class App extends Component {
     }));
   };
   onClickItem = e => {
-    if (e.target.nodeName !== 'BUTTON') console.dir('Тут має бути модалка)! ');
+    if (e.target.nodeName !== 'BUTTON')
+      console.dir('Тут має бути модалка)! (недопрацьовано) ');
   };
+
   render() {
     const { filter } = this.state;
     const visibleContacts = this.getVisibleContacts();
+
     return (
       <div className={s.container}>
         <div className={s.form}>
