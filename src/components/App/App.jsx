@@ -57,7 +57,7 @@ class App extends Component {
     }));
   };
   onClickItem = e => {
-    if (e.target.nodeName !== 'BUTTON') console.dir('Тут має бути модалка) ');
+    if (e.target.nodeName !== 'BUTTON') console.dir('Тут має бути модалка)! ');
   };
   render() {
     const { filter } = this.state;
