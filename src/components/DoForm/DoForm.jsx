@@ -52,9 +52,9 @@ class DoForm extends Component {
               type="tel"
               name="number"
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              placeholder="Enter number phone"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               required
-              placeholder="Enter number phone"
               onChange={e => this.handleChange(e)}
               value={number}
             />

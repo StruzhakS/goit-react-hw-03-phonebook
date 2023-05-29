@@ -4,7 +4,9 @@ const ClearButton = ({ clearContact }) => (
     className={s.clearButton}
     type="button"
     onClick={() => {
-      if (window.confirm('Are you sure you wish to delete all contacts?')) {
+      if (
+        window.confirm('Are you sure you want to delete all your contacts?')
+      ) {
         clearContact();
       }
     }}
